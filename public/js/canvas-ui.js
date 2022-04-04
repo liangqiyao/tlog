@@ -94867,12 +94867,6 @@ var render = function () {
                   "col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-12 mt-3",
               },
               [
-                _c("h1", { staticClass: "font-serif" }, [_vm._v("Canvas")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "lead text-secondary" }, [
-                  _vm._v("A Laravel Publishing Platform"),
-                ]),
-                _vm._v(" "),
                 _c("main", { staticClass: "mt-5", attrs: { role: "main" } }, [
                   _c(
                     "div",
@@ -95120,12 +95114,6 @@ var render = function () {
                   "col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-12 mt-3",
               },
               [
-                _c("h1", { staticClass: "font-serif" }, [_vm._v("Canvas")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "lead text-secondary" }, [
-                  _vm._v("A Laravel Publishing Platform"),
-                ]),
-                _vm._v(" "),
                 _c("main", { staticClass: "mt-5", attrs: { role: "main" } }, [
                   _c("div", [
                     _vm._m(0),
@@ -95260,12 +95248,6 @@ var render = function () {
                   "col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-12 mt-3",
               },
               [
-                _c("h1", { staticClass: "font-serif" }, [_vm._v("Canvas")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "lead text-secondary" }, [
-                  _vm._v("A Laravel Publishing Platform"),
-                ]),
-                _vm._v(" "),
                 _c("main", { staticClass: "mt-5", attrs: { role: "main" } }, [
                   _c("div", [
                     _vm._m(0),

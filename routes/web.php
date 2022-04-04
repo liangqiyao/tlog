@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect()->route('canvas-ui');
+});
 
-
-
+Route::prefix('canvas-ui')->group(function () {
     Route::prefix('api')->group(function () {
         Route::get('posts', [\App\Http\Controllers\CanvasUiController::class, 'getPosts']);
         Route::get('posts/{slug}', [\App\Http\Controllers\CanvasUiController::class, 'showPost'])
@@ -35,3 +37,4 @@ use Illuminate\Support\Facades\Route;
     Route::get('/{view?}', [\App\Http\Controllers\CanvasUiController::class, 'index'])
          ->where('view', '(.*)')
          ->name('canvas-ui');
+});
