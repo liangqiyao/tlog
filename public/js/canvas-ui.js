@@ -2280,7 +2280,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   metaInfo: function metaInfo() {
     return {
-      title: 'Canvas'
+      title: '小梁天地'
     };
   },
   data: function data() {
@@ -2426,7 +2426,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   metaInfo: function metaInfo() {
     return {
-      title: 'Canvas'
+      title: '小梁天地'
     };
   },
   data: function data() {
@@ -2551,7 +2551,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   metaInfo: function metaInfo() {
     return {
-      title: 'Canvas'
+      title: '小梁天地'
     };
   },
   data: function data() {
