@@ -70,5 +70,12 @@
                 </div>
             </div>
         </div>
+
+<div style="width: 100%;position: fixed;z-index: 302;bottom: 5px;padding-top: 1px;overflow: hidden;zoom: 1;margin: 0;background: #fff;text-align: center">
+<a class="text-color" href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022033864号</a>
+    &nbsp;
+    &nbsp;
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44180302000147" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/beian.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44180302000147号</p></a>
+</div>
     </body>
 </html>
