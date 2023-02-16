@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return redirect()->route('canvas-ui');
+    return view('welcome');
 });
 
 Route::prefix('canvas-ui')->group(function () {
