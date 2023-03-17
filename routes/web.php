@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 Route::get('/test', function (\Symfony\Component\HttpFoundation\Request $req) {
     $data = $req->header();
-    return $data;
+    $other = [$req->getClientIp()];
+    return compact('data', 'other');
 });
 
 Route::prefix('canvas-ui')->group(function () {
