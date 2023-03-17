@@ -16,6 +16,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function (\Symfony\Component\HttpFoundation\Request $req) {
+    
+    $data = $req->header();
+    
+    dump($data);
+
+    dump(json_encode($data));
+});
+
 Route::prefix('canvas-ui')->group(function () {
     Route::prefix('api')->group(function () {
         Route::get('posts', [\App\Http\Controllers\CanvasUiController::class, 'getPosts']);
