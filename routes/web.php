@@ -17,12 +17,8 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function (\Symfony\Component\HttpFoundation\Request $req) {
-    
     $data = $req->header();
-    
-    dump($data);
-
-    dump(json_encode($data));
+    return $data;
 });
 
 Route::prefix('canvas-ui')->group(function () {
