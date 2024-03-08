@@ -48,11 +48,17 @@
     </div>
   </div>
 </form>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>幸运数字</legend>
+</fieldset>
+<table class="layui-hide" id="test"></table>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
 <script>
-layui.use(['form','jquery'], function(){
-  var form = layui.form;
+layui.use(['form','jquery','layer'，'table'], function(){
+    var layer = parent.layer === undefined ? layui.layer : top.layer;
+
+
   //各种基于事件的操作，下面会有进一步介绍
   var $ = layui.jquery;
     $.ajaxSetup({
@@ -60,31 +66,39 @@ layui.use(['form','jquery'], function(){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-form.on('submit(*)', function(data){
-  console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
-  console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
-  console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+  var form = layui.form;
+  form.on('submit(*)', function(data){
+     $.ajax({
+        type: 'POST',
+        url: '/safeTickect',
+        data:{
+            num: data.num,  //主键
+            min: data.min,  //主键
+            max: data.max,  //主键
+        },
+        dataType: "json",
+        success: function (data) {//        
+            console.log(data);
 
-   $.ajax({
-            type: 'POST',
-            url: '/safeTickect',
-            data:{
-                num: data.num,  //主键
-                min: data.min,  //主键
-                max: data.max,  //主键
-            },
-            dataType: "json",
-            success: function (data) {//        
-                console.log(data);
+            var str = '1,2,3,4';
+            layer.open({
+                type: 1
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: '300px;'
+                ,shade: 0.8
+                ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">幸运号码：'+str+'</div>'
+                
+              });
             }
         });
-
-
-  return false;
+    return false;
+  });
 });
 
-
-});
 </script> 
 </body>
 </html>
