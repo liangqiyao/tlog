@@ -11,7 +11,7 @@ class ResetSafe extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'reset:safeTickect';
 
     /**
      * The console command description.

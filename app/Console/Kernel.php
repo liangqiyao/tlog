@@ -18,8 +18,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
         // 早晚8点清空随机池
-        $schedule->command('reset:ResetSafe')->at('8:00');
-        $schedule->command('reset:ResetSafe')->at('20:00');
+        $schedule->command('reset:safeTickect')->at('8:00');
+        $schedule->command('reset:safeTickect')->at('20:00');
     }
 
     /**
