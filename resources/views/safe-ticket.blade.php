@@ -113,11 +113,11 @@ layui.use(['form','jquery','layer'], function(){
   form.on('submit(*)', function(data){
     console.log(data);
 
-    if(data.field.num > 15){
+    if(parseInt(data.field.num) > 15){
       layer.alert("一次最多生成15个");
       return false;
     }
-    if(data.field.min >= data.field.max || (data.field.max - data.field.min < data.field.num)){
+    if(parseInt(data.field.min) >= parseInt(data.field.max) || parseInt(data.field.max) - parseInt(data.field.min) < parseInt(data.field.num)){
       layer.alert("参数有误");
       return false;
     }
@@ -131,9 +131,9 @@ layui.use(['form','jquery','layer'], function(){
         url: '/safeTickect',
         data:{
             lucknumber: luckNumber,  //主键
-            num: data.field.num,  //主键
-            min: data.field.min,  //主键
-            max: data.field.max,  //主键
+            num: parseInt(data.field.num),  //主键
+            min: parseInt(data.field.min),  //主键
+            max: parseInt(data.field.max),  //主键
         },
         dataType: "json",
         success: function (ret) {//        
