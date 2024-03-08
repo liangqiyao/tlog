@@ -137,8 +137,7 @@ layui.use(['form','jquery','layer'], function(){
             console.log(ret);
 
             //保存到浏览器缓存
-            localStorage.setItem('luckNumber', ret.number);
-  
+            setLuckNumber(ret.number);  
 
             layer.open({
                 type: 1
