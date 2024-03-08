@@ -7,9 +7,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/css/layui.css">
 </head>
 <body>
- 
 <!-- 你的 HTML 代码 -->
-
+<blockquote class="layui-elem-quote layui-text">
+  1、抽奖活动一天500张票默认抽5次，如果需要可以自行修改指定次数
+  2、建议每个人每天生成一次就好，然后按照给出的数字进行下注， 这样我们的中奖概率会更大
+  3、随机数池子早晚8点清空
+</blockquote>
+              
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>抽奖</legend>
+</fieldset>
 <form class="layui-form" > <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
   <div class="layui-form-item">
     <label class="layui-form-label">生成个数</label>
@@ -49,7 +56,7 @@ form.on('submit(*)', function(data){
   console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
   console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
   
-  
+
 
 
   return false;
