@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // 早晚8点清空随机池
+        $schedule->command('report:generate')->at(['8:00':'20:00']);
     }
 
     /**
@@ -29,4 +32,8 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+
+
+
 }

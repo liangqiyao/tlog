@@ -18,17 +18,18 @@ class Controller extends BaseController
 
 
     public function safeTickect(Request $request){
+        \Log::info("post safeTickect:", $request->all());
         $data   = ['number'=>'', 'count'=>0, 'msg'=>'参数错误'];
         $count  = 0;
 
         $validate = Validator::make($request->all(), [
           'num' =>  'required|integer|between:1,15',
-          'min' =>  'required|integer',
-          'max' =>  'required|integer'
+          'min' =>  'required|integer|max:5000',
+          'max' =>  'required|integer|max:5000'
         ]);
         if($validate->fails())
         {
-            $data['req']=$request->all();
+            $data['msg']=$validate->message();
             return $data;
         }
 

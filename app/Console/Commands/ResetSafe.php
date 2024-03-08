@@ -18,7 +18,7 @@ class ResetSafe extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'reset safe pools';
 
     /**
      * Execute the console command.
@@ -27,6 +27,9 @@ class ResetSafe extends Command
      */
     public function handle()
     {
+        //重置前可以考虑保存一下 TODO
+        Redis::set('safe:numbers', json_encode([]));
+        Redis::set('safe:count', 0);
         return 0;
     }
 }
