@@ -55,9 +55,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
 <script>
-layui.use(['form','jquery','layer'，'table'], function(){
+layui.use(['form','jquery','layer'], function(){
     var layer = parent.layer === undefined ? layui.layer : top.layer;
-
 
   //各种基于事件的操作，下面会有进一步介绍
   var $ = layui.jquery;
