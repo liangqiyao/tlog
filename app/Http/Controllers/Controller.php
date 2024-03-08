@@ -28,6 +28,7 @@ class Controller extends BaseController
         ]);
         if($validate->fails())
         {
+            $data['req'=>$request->all()];
             return $data;
         }
 
