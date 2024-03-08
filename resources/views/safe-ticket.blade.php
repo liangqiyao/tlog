@@ -48,6 +48,13 @@
     </div>
   </div>
 </form>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>已生成幸运数：</legend>
+</fieldset>
+
+<blockquote class="layui-elem-quote layui-text">
+ <div id = "luckNumberText"></div>
+</blockquote>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
 <script>
@@ -61,6 +68,13 @@ layui.use(['form','jquery','layer'], function(){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
+
+  var luckNumber = $.jStorage.set('luckNumber');
+  if(luckNumber != ""){
+    $("#luckNumber").html(luckNumber);
+
+  }
+
   var form = layui.form;
   form.on('submit(*)', function(data){
     console.log(data);
@@ -82,6 +96,11 @@ layui.use(['form','jquery','layer'], function(){
         dataType: "json",
         success: function (ret) {//        
             console.log(ret);
+
+            //保存到浏览器缓存
+            $.jStorage.set('luckNumber', ret.number);   
+
+
             layer.open({
                 type: 1
                 ,title: false //不显示标题栏
