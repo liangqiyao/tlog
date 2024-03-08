@@ -54,5 +54,12 @@ Route::get('/safeTickect', function () {
 });
 
 
-Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTickect']
+// Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTickect']
+// );
+
+Route::post('/safeTickect',  function(){
+    $data = [1,2,3,4];
+    return compact('data');
+}
 );
+
