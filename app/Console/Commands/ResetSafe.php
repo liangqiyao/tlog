@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Redis;
+
 
 class ResetSafe extends Command
 {
@@ -27,6 +29,8 @@ class ResetSafe extends Command
      */
     public function handle()
     {
+        \Log::info("reset safeTickect");
+        
         //重置前可以考虑保存一下 TODO
         Redis::set('safe:numbers', json_encode([]));
         Redis::set('safe:count', 0);
