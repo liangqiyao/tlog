@@ -73,7 +73,7 @@ layui.use(['form','jquery','layer'], function(){
         },
         dataType: "json",
         success: function (data) {//        
-
+            console.log(data);
             layer.open({
                 type: 1
                 ,title: false //不显示标题栏
