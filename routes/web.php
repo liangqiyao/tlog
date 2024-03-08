@@ -54,5 +54,5 @@ Route::get('/safeTickect', function () {
 });
 
 
-Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTickect']);
-});
+Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTickect']
+);
