@@ -137,6 +137,11 @@ layui.use(['form','jquery','layer'], function(){
         },
         dataType: "json",
         success: function (ret) {//        
+
+            if(ret.msg != ""){
+                layer.alert(ret.msg);
+              return 1;
+            }
             console.log(ret);
 
             //保存到浏览器缓存

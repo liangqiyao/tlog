@@ -19,7 +19,7 @@ class Controller extends BaseController
 
     public function safeTickect(Request $request){
         \Log::info("post safeTickect:".$request->getClientIp(), $request->all());
-        $data   = ['number'=>'', 'count'=>0, 'msg'=>'参数错误'];
+        $data   = ['number'=>'', 'count'=>0, 'msg'=>''];
         $count  = 0;
 
         $validate = Validator::make($request->all(), [
@@ -29,7 +29,7 @@ class Controller extends BaseController
         ]);
         if($validate->fails())
         {
-            $data['msg']=$validate->message();
+            $data['msg']="参数异常";
             return $data;
         }
 
