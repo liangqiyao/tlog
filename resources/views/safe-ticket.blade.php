@@ -102,11 +102,13 @@ layui.use(['form','jquery','layer'], function(){
   $(document).ready(function(){
     var luckNumber = getLuckNumber();
     if(luckNumber != ""){
-      $("#luckNumberText").html(luckNumber);
+      setLuckNumberText(luckNumber);
     }
   });
 
-
+  function setLuckNumberText(str){
+    $("#luckNumberText").html(str);
+  }
   var form = layui.form;
   form.on('submit(*)', function(data){
     console.log(data);
@@ -147,7 +149,9 @@ layui.use(['form','jquery','layer'], function(){
                 ,btnAlign: 'c'
                 ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff;">幸运号码：'+ret.number+'<br>当前阶段总发放号码数：'+ret.count+'</div>'
                  ,yes: function(){
-                    location.reload();
+                    layer.close();
+                    setLuckNumberText(ret.number);
+
                   }
                 
               });
