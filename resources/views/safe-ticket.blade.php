@@ -80,14 +80,12 @@ function getLuckNumber(){
   var luckNumber = '';
   var date = new Date();
   const str = localStorage.getItem('luckNumber');
-  if(str != ""){
+  if(str != "" && str!= undefined){
     const obj = JSON.parse(str);
     if(date.getTime() < obj.exp){
       luckNumber = obj.val;
     }
   }
-
-
   return luckNumber;
 }
 
