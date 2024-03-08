@@ -120,6 +120,13 @@ layui.use(['form','jquery','layer'], function(){
         });
     return false;
   });
+
+
+  form.on('reset(*)', function(data){
+      layer.alert("reset");
+
+
+  })
 });
 
 </script> 
