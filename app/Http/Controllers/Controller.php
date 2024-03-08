@@ -36,7 +36,7 @@ class Controller extends BaseController
         $num  = $request->input("num");
         $min  = $request->input("min");
         $max  = $request->input("max");
-        $number = getRandNumber($num, $min, $max);
+        $number = $this->getRandNumber($num, $min, $max);
         $count  = Redis::get('safe:count');
 
         $data   = ['number'=>$number, 'count'=>$count];
@@ -50,7 +50,7 @@ class Controller extends BaseController
 
 #设置缓存 ， 放到redis
 function saveNumber($arr){
-    $old_arr = getNumber();
+    $old_arr = $this->getNumber();
     $new_arr = array_merge($old_arr, $arr);
     $user = Redis::set('safe:numbers', json_encode($new_arr));
 
@@ -69,7 +69,7 @@ function getRandNumber($num = 10, $min = 200, $max=2000){
 
     $count = $max - $min;
     $arr = [];
-    $arr_exist = getNumber();
+    $arr_exist = $this->getNumber();
     foreach($arr_exist as $key => $val){
         if($key >= $min && $key < $max){
             $arr[$key] = 1;
@@ -103,7 +103,7 @@ function getRandNumber($num = 10, $min = 200, $max=2000){
     }
     
 
-    saveNumber($ret);
+    $this->saveNumber($ret);
 
     return $ret;
 
