@@ -82,7 +82,7 @@ function getLuckNumber(){
   const obj = localStorage.getItem('luckNumber');
 
   if(date.getTime() < obj.exp){
-    luckNumber = obj.luckNumber;
+    luckNumber = obj.val;
   }
 
   return luckNumber;
