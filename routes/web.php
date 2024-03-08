@@ -50,5 +50,5 @@ Route::prefix('canvas-ui')->group(function () {
 
 
 Route::get('/safeTickect', function () {
-    return view('safeTickect');
+    return view('safe-ticket');
 });
