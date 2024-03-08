@@ -15,7 +15,7 @@
 <blockquote class="layui-elem-quote layui-text">
   1、抽奖活动一天500张票默认抽5次，如果需要可以自行修改指定次数<br>
   2、建议每个人每天生成一次就好，然后按照给出的数字进行下注，这样我们的中奖概率会更大<br>
-  3、随机数池子早晚8点清空
+  3、随机数池早晚8点清空
 </blockquote>
               
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">

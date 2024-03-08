@@ -22,10 +22,10 @@ class Controller extends BaseController
         $data   = ['number'=>'', 'count'=>0, 'msg'=>'参数错误'];
         $count  = 0;
 
-        $validate = Validator::make($request- all(), [
-          'num' =  'required|integer|between:1,15',
-          'min' =  'required|integer',
-          'max' =  'required|integer'
+        $validate = Validator::make($request->all(), [
+          'num' =>  'required|integer|between:1,15',
+          'min' =>  'required|integer',
+          'max' =>  'required|integer'
         ]);
         if($validate- fails())
         {
