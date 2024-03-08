@@ -117,7 +117,7 @@ layui.use(['form','jquery','layer'], function(){
       layer.alert("一次最多生成15个");
       return false;
     }
-    if(data.field.min >= data.field.max || data.field.max - data.field.min < data.field.num){
+    if(data.field.min >= data.field.max || (data.field.max - data.field.min < data.field.num)){
       layer.alert("参数有误");
       return false;
     }
