@@ -75,7 +75,7 @@ layui.use(['form','jquery','layer'], function(){
         success: function (data) {//        
             console.log(data);
 
-            var str = '1,2,3,4';
+            var str = '123,244,355,111,232,232,232,232,232,232';
             layer.open({
                 type: 1
                 ,title: false //不显示标题栏
