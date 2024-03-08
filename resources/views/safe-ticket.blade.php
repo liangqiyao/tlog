@@ -64,6 +64,13 @@ layui.use(['form','jquery','layer'], function(){
   var form = layui.form;
   form.on('submit(*)', function(data){
     console.log(data);
+    if(data.field.min >= data.field.max || data.field.max - data.field.min < data.field.num){
+      layer.alert("参数有误");
+      return false;
+    }
+
+
+
      $.ajax({
         type: 'POST',
         url: '/safeTickect',
