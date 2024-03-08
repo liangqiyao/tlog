@@ -113,7 +113,10 @@ layui.use(['form','jquery','layer'], function(){
   form.on('submit(*)', function(data){
     console.log(data);
 
-
+    if(data.field.num > 15){
+      layer.alert("一次最多生成15个");
+      return false;
+    }
     if(data.field.min >= data.field.max || data.field.max - data.field.min < data.field.num){
       layer.alert("参数有误");
       return false;
