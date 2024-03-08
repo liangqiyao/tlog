@@ -10,7 +10,7 @@
  
 <!-- 你的 HTML 代码 -->
  
-<script src="./layui/layui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
 <script>
 layui.use(['layer', 'form'], function(){
   var layer = layui.layer
