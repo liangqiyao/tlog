@@ -44,3 +44,11 @@ Route::prefix('canvas-ui')->group(function () {
          ->where('view', '(.*)')
          ->name('canvas-ui');
 });
+
+
+
+
+
+Route::get('/safeTickect', function () {
+    return view('safeTickect');
+});
