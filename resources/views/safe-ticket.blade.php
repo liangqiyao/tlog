@@ -118,6 +118,8 @@ layui.use(['form','jquery','layer'], function(){
     }
 
 
+    var luckNumber = getLuckNumber();
+
 
      $.ajax({
         type: 'POST',
