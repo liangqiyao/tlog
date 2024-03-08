@@ -48,10 +48,6 @@
     </div>
   </div>
 </form>
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>幸运数字</legend>
-</fieldset>
-<table class="layui-hide" id="test"></table>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
 <script>
@@ -87,9 +83,13 @@ layui.use(['form','jquery','layer'], function(){
                 ,area: '300px;'
                 ,shade: 0.8
                 ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                 ,btn: ['知道了']
                 ,btnAlign: 'c'
                 ,moveType: 1 //拖拽模式，0或者1
                 ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">幸运号码：'+str+'</div>'
+                 ,success: function(layero){
+                  layer.closeAll();
+                 }
                 
               });
             }
