@@ -69,7 +69,7 @@ layui.use(['form','jquery','layer'], function(){
     }
   });
 
-  var luckNumber = $.jStorage.set('luckNumber');
+  var luckNumber = localStorage.getItem('luckNumber');
   if(luckNumber != ""){
     $("#luckNumber").html(luckNumber);
 
@@ -98,8 +98,8 @@ layui.use(['form','jquery','layer'], function(){
             console.log(ret);
 
             //保存到浏览器缓存
-            $.jStorage.set('luckNumber', ret.number);   
-
+            localStorage.setItem('luckNumber', ret.number);
+  
 
             layer.open({
                 type: 1
