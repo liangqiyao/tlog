@@ -22,7 +22,6 @@
   <legend>抽奖</legend>
 </fieldset>
 <form class="layui-form" > <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
-  <input type="hidden" name="lucknumber">
   <div class="layui-form-item">
     <label class="layui-form-label">生成个数</label>
     <div class="layui-input-block">
@@ -104,7 +103,6 @@ layui.use(['form','jquery','layer'], function(){
     var luckNumber = getLuckNumber();
     if(luckNumber != ""){
       $("#luckNumberText").html(luckNumber);
-      $("input[name=lucknumber]").value=luckNumber;
     }
   });
 
@@ -125,7 +123,7 @@ layui.use(['form','jquery','layer'], function(){
         type: 'POST',
         url: '/safeTickect',
         data:{
-            lucknumber: data.field.lucknumber,  //主键
+            lucknumber: luckNumber,  //主键
             num: data.field.num,  //主键
             min: data.field.min,  //主键
             max: data.field.max,  //主键
