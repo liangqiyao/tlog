@@ -16,8 +16,7 @@ class Controller extends BaseController
 
     public function safeTickect(){
 
-        $arr = [1, 2 ,3 ,4, 5];
-
-         return $user ? response()->json($arr, 200) : response()->json(null, 404);
+        $data = ['number'=>"123,123,123,123,123,123,123,123,123"];
+        return $data;
     }
 }
