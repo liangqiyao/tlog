@@ -111,7 +111,7 @@ layui.use(['form','jquery','layer'], function(){
     console.log(data);
 
 
-    var luckNumber = getLuckNumber;
+    var luckNumber = getLuckNumber();
     if(luckNumber != ""){
       layer.alert("已生成幸运号码，请不要重复操作");
       return false;
