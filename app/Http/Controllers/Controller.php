@@ -59,8 +59,8 @@ function delNumber($oldNumberArr){
     $diff = array_diff($data, $oldNumberArr);
     sort($diff);
 
-    $this->saveNumber($diff);
-
+    Redis::set('safe:numbers', json_encode($diff));
+    Redis::set('safe:count', count($diff));    
 }
 
 #设置缓存 ， 放到redis
