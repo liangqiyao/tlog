@@ -58,6 +58,36 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
 <script>
+
+function setLuckNumber(luckNumber){
+
+  var date = new Date();
+  var hours = date.getHours();
+  if(hours >=8 && hours < 20){
+    date.setHours(20,0,0,0);
+  } else {
+    date.setDate(date.getDate() + 1);
+    date.setHours(8,0,0,0);
+  }
+
+  const obj ={ val:luckNumber, exp:date.getTime() };
+  localStorage.setItem('luckNumber', JSON.stringify(obj));
+
+}
+
+
+function getLuckNumber(){
+  var luckNumber = '';
+  var date = new Date();
+  const obj = localStorage.getItem('luckNumber');
+
+  if(date.getTime() < obj.exp){
+    luckNumber = obj.luckNumber;
+  }
+
+  return luckNumber;
+}
+
 layui.use(['form','jquery','layer'], function(){
     var layer = parent.layer === undefined ? layui.layer : top.layer;
 
@@ -69,7 +99,7 @@ layui.use(['form','jquery','layer'], function(){
     }
   });
   $(document).ready(function(){
-    var luckNumber = localStorage.getItem('luckNumber');
+    var luckNumber = getLuckNumber();
     if(luckNumber != ""){
       $("#luckNumberText").html(luckNumber);
     }
@@ -79,6 +109,14 @@ layui.use(['form','jquery','layer'], function(){
   var form = layui.form;
   form.on('submit(*)', function(data){
     console.log(data);
+
+
+    var luckNumber = localStorage.getItem('luckNumber');
+    if(luckNumber != ""){
+      layer.alert("已生成幸运号码，请不要重复操作");
+      return false;
+    }
+
     if(data.field.min >= data.field.max || data.field.max - data.field.min < data.field.num){
       layer.alert("参数有误");
       return false;
@@ -121,12 +159,6 @@ layui.use(['form','jquery','layer'], function(){
     return false;
   });
 
-
-  form.on('reset(*)', function(data){
-      layer.alert("reset");
-
-
-  })
 });
 
 </script> 
