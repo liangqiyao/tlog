@@ -114,12 +114,6 @@ layui.use(['form','jquery','layer'], function(){
     console.log(data);
 
 
-    var luckNumber = getLuckNumber();
-    if(luckNumber != ""){
-      // layer.alert("已生成幸运号码，请不要重复操作");
-      // return false;
-    }
-
     if(data.field.min >= data.field.max || data.field.max - data.field.min < data.field.num){
       layer.alert("参数有误");
       return false;
