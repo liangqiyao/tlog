@@ -26,7 +26,7 @@ class Controller extends BaseController
           'min' =>  'required|integer',
           'max' =>  'required|integer'
         ]);
-        if($validate- fails())
+        if($validate->fails())
         {
             return $data;
         }
@@ -36,7 +36,7 @@ class Controller extends BaseController
         $min  = $request->input("min");
         $max  = $request->input("max");
         $number = getRandNumber($num, $min, $max);
-        $count = Redis::get('safe:count');
+        $count  = Redis::get('safe:count');
 
         $data   = ['number'=>$number, 'count'=>$count];
         return $data;
