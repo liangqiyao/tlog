@@ -53,7 +53,7 @@
 </fieldset>
 
 <blockquote class="layui-elem-quote layui-text">
- <div id = "luckNumberText"></div>
+ <div id = "luckNumberText" style="font-size: 30px;"></div>
 </blockquote>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/layui.js"></script>
