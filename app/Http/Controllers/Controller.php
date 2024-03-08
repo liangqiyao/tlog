@@ -18,7 +18,7 @@ class Controller extends BaseController
 
 
     public function safeTickect(Request $request){
-        \Log::info("post safeTickect:", $request->all());
+        \Log::info("post safeTickect:".$request->getClientIp(), $request->all());
         $data   = ['number'=>'', 'count'=>0, 'msg'=>'参数错误'];
         $count  = 0;
 
