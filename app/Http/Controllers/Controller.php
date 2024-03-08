@@ -47,7 +47,8 @@ class Controller extends BaseController
         $number = $this->getRandNumber($num, $min, $max);
         $count  = Redis::get('safe:count');
 
-        $data   = ['number'=>implode(',', $number), 'count'=>$count];
+        $data['number'] = implode(',', $number);
+        $data['count']  = $count;
         return $data;
     }
 
