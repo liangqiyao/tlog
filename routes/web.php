@@ -59,7 +59,7 @@ Route::get('/safeTickect', function () {
 
 Route::post('/safeTickect',  function(){
     $data = ['number'=>"123,123,123,123,123,123,123,123,123"];
-    return compact('data');
+    return $data;
 }
 );
 
