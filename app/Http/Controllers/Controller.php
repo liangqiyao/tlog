@@ -57,7 +57,7 @@ function delNumber($oldNumberArr){
     $data = $this->getNumber();
 
     $diff = array_diff($data, $oldNumberArr);
-    \Log::debuf("dif:", $dif);
+    \Log::debuf("dif:", $diff);
     $this->saveNumber($diff);
 
 }
