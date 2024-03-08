@@ -38,6 +38,7 @@ class Controller extends BaseController
         $max  = $request->input("max");
 
         if(!empty($lucknumber)){
+
             $oldNumberArr = explode(',', $lucknumber);
             $this->delNumber($oldNumberArr);
         }
@@ -56,9 +57,9 @@ function delNumber($oldNumberArr){
     $data = $this->getNumber();
 
     $diff = array_diff($data, $oldNumberArr);
-
+    \Log::debuf("dif:", $dif);
     $this->saveNumber($diff);
-    
+
 }
 
 #设置缓存 ， 放到redis
