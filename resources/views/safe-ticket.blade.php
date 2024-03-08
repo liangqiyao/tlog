@@ -22,6 +22,7 @@
   <legend>抽奖</legend>
 </fieldset>
 <form class="layui-form" > <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+  <input type="hidden" name="lucknumber">
   <div class="layui-form-item">
     <label class="layui-form-label">生成个数</label>
     <div class="layui-input-block">
@@ -103,6 +104,7 @@ layui.use(['form','jquery','layer'], function(){
     var luckNumber = getLuckNumber();
     if(luckNumber != ""){
       $("#luckNumberText").html(luckNumber);
+      $("input[name=lucknumber]").value=luckNumber;
     }
   });
 
@@ -114,8 +116,8 @@ layui.use(['form','jquery','layer'], function(){
 
     var luckNumber = getLuckNumber();
     if(luckNumber != ""){
-      layer.alert("已生成幸运号码，请不要重复操作");
-      return false;
+      // layer.alert("已生成幸运号码，请不要重复操作");
+      // return false;
     }
 
     if(data.field.min >= data.field.max || data.field.max - data.field.min < data.field.num){

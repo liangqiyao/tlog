@@ -32,10 +32,16 @@ class Controller extends BaseController
             return $data;
         }
 
-
+        $lucknumber  = $request->input("lucknumber");    
         $num  = $request->input("num");
         $min  = $request->input("min");
         $max  = $request->input("max");
+
+        if(!empty($lucknumber)){
+            $oldNumberArr = explode(',', $lucknumber);
+            $this->delNumber($oldNumberArr);
+        }
+
         $number = $this->getRandNumber($num, $min, $max);
         $count  = Redis::get('safe:count');
 
@@ -46,7 +52,14 @@ class Controller extends BaseController
 
 
 
+function delNumber($oldNumberArr){
+    $data = $this->getNumber();
 
+    $diff = array_diff($data, $oldNumberArr);
+
+    $this->saveNumber($diff);
+    
+}
 
 #设置缓存 ， 放到redis
 function saveNumber($arr){
