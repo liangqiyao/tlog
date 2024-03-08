@@ -9,8 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
-
-
+use Validator;
 
 
 class Controller extends BaseController
@@ -29,7 +28,7 @@ class Controller extends BaseController
         ]);
         if($validate- fails())
         {
-         return $data;
+            return $data;
         }
 
 
