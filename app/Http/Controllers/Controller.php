@@ -15,8 +15,14 @@ class Controller extends BaseController
 
 
     public function safeTickect(){
+        $count  = 0;
+        $number = "123,123,123,123,123,123,123,123,123";
 
-        $data = ['number'=>"123,123,123,123,123,123,123,123,123"];
+
+
+
+        
+        $data   = ['number'=>$number, 'count'=>$count];
         return $data;
     }
 }

@@ -82,7 +82,7 @@ layui.use(['form','jquery','layer'], function(){
                 ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
                  ,btn: '知道了'
                 ,btnAlign: 'c'
-                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff;">幸运号码：'+data.number+'</div>'
+                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff;">幸运号码：'+data.number+'<br>当前阶段总发放号码数：'+data.count+'</div>'
                  ,yes: function(){
                     layer.closeAll();
                   }
