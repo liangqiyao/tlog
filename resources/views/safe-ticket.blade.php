@@ -68,12 +68,13 @@ layui.use(['form','jquery','layer'], function(){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
+  $(document).ready(function(){
+    var luckNumber = localStorage.getItem('luckNumber');
+    if(luckNumber != ""){
+      $("#luckNumberText").html(luckNumber);
+    }
+  });
 
-  var luckNumber = localStorage.getItem('luckNumber');
-  if(luckNumber != ""){
-    $("#luckNumber").html(luckNumber);
-
-  }
 
   var form = layui.form;
   form.on('submit(*)', function(data){
