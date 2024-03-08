@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+    public function safeTickect(){
+
+        $arr = [1, 2, ,3 ,4, 5];
+
+         return $user ? response()->json($arr, 200) : response()->json(null, 404);
+    }
 }

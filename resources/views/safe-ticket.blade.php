@@ -9,8 +9,8 @@
 <body>
 <!-- 你的 HTML 代码 -->
 <blockquote class="layui-elem-quote layui-text">
-  1、抽奖活动一天500张票默认抽5次，如果需要可以自行修改指定次数
-  2、建议每个人每天生成一次就好，然后按照给出的数字进行下注， 这样我们的中奖概率会更大
+  1、抽奖活动一天500张票默认抽5次，如果需要可以自行修改指定次数<br>
+  2、建议每个人每天生成一次就好，然后按照给出的数字进行下注，这样我们的中奖概率会更大<br>
   3、随机数池子早晚8点清空
 </blockquote>
               
@@ -39,7 +39,7 @@
 
   <div class="layui-form-item">
     <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+      <button class="layui-btn" lay-submit lay-filter="*">生成</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
@@ -56,7 +56,19 @@ form.on('submit(*)', function(data){
   console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
   console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
   
-
+   $.ajax({
+            type: 'POST',
+            url: '/safeTickect',
+            data:{
+                num: data.num,  //主键
+                min: data.min,  //主键
+                max: data.max,  //主键
+            },
+            dataType: "json",
+            success: function (data) {//        
+                console.log(data);
+            }
+        });
 
 
   return false;

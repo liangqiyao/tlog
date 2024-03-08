@@ -52,3 +52,7 @@ Route::prefix('canvas-ui')->group(function () {
 Route::get('/safeTickect', function () {
     return view('safe-ticket');
 });
+
+
+Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTickect']);
+});
