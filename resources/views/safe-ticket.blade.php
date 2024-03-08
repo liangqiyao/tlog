@@ -63,6 +63,7 @@ layui.use(['form','jquery','layer'], function(){
   });
   var form = layui.form;
   form.on('submit(*)', function(data){
+    console.log(data);
      $.ajax({
         type: 'POST',
         url: '/safeTickect',
