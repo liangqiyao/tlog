@@ -68,9 +68,9 @@ layui.use(['form','jquery','layer'], function(){
         type: 'POST',
         url: '/safeTickect',
         data:{
-            num: data.num,  //主键
-            min: data.min,  //主键
-            max: data.max,  //主键
+            num: data.field.num,  //主键
+            min: data.field.min,  //主键
+            max: data.field.max,  //主键
         },
         dataType: "json",
         success: function (ret) {//        
