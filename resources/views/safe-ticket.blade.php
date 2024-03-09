@@ -17,7 +17,11 @@
   2、建议每个人每天生成一次就好，然后按照给出的数字进行下注，这样我们的中奖概率会更大<br>
   3、随机数池早晚8点清空
 </blockquote>
-              
+             
+<blockquote class="layui-elem-quote layui-text">
+ <div style="font-size: 20px;">奖池总数:  <b>{{$total}}</b> 个 </div>
+</blockquote>
+ 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
   <legend>选号</legend>
 </fieldset>
@@ -48,8 +52,10 @@
     </div>
   </div>
 </form>
+
+
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>已生成幸运数：</legend>
+  <legend>当前幸运号码：</legend>
 </fieldset>
 
 <blockquote class="layui-elem-quote layui-text">
@@ -114,11 +120,16 @@ layui.use(['form','jquery','layer'], function(){
     console.log(data);
 
     if(parseInt(data.field.num) > 15){
-      layer.alert("一次最多生成15个");
+      layer.alert("一次最多生成15个！");
       return false;
     }
-    if(parseInt(data.field.min) >= parseInt(data.field.max) || parseInt(data.field.max) - parseInt(data.field.min) < parseInt(data.field.num)){
-      layer.alert("参数有误");
+    if(parseInt(data.field.min) >= parseInt(data.field.max)){
+      layer.alert("最大值要大于最小值！");
+      return false;
+    }
+
+    if( parseInt(data.field.max) - parseInt(data.field.min)+1 < parseInt(data.field.num)){
+      layer.alert("所选范围少于生成个数！");
       return false;
     }
 
@@ -137,16 +148,19 @@ layui.use(['form','jquery','layer'], function(){
         },
         dataType: "json",
         success: function (ret) {//        
-
-            if(ret.msg != ""){
-                layer.alert(ret.msg);
-              return 1;
-            }
             console.log(ret);
+            if(parseInt(ret.status) < 1){
+                layer.alert(ret.msg);
+                return 1;
+            }
 
+            var smsg='<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff;">幸运号码：'+ret.number;
             //保存到浏览器缓存
             setLuckNumber(ret.number);  
-
+            if(ret.msg!=""){
+              smsg = smsg+'  ('+ret.msg+')';
+            }
+            smsg = smsg+'<br>当前阶段总发放号码数：'+ret.count+'</div>';
             layer.open({
                 type: 1
                 ,title: false //不显示标题栏
@@ -155,7 +169,7 @@ layui.use(['form','jquery','layer'], function(){
                 ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
                  ,btn: '知道了'
                 ,btnAlign: 'c'
-                ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff;">幸运号码：'+ret.number+'<br>当前阶段总发放号码数：'+ret.count+'</div>'
+                ,content: smsg
                  ,yes: function(){
                     layer.closeAll();
                     setLuckNumberText(ret.number);

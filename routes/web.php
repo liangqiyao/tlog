@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redis;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,7 +50,8 @@ Route::prefix('canvas-ui')->group(function () {
 
 
 Route::get('/safeTickect', function () {
-    return view('safe-ticket');
+    $total  = Redis::get('safe:count');//获取奖池数
+    return view('safe-ticket', compact('total'));
 });
 
 

@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Validator;
-
+ 
 
 class Controller extends BaseController
 {
@@ -19,7 +19,7 @@ class Controller extends BaseController
 
     public function safeTickect(Request $request){
         \Log::info("post safeTickect:".$request->getClientIp(), $request->all());
-        $data   = ['number'=>'', 'count'=>0, 'msg'=>''];
+        $data   = ['status'=>1, 'number'=>'', 'count'=>0, 'msg'=>''];
         $count  = 0;
 
         $validate = Validator::make($request->all(), [
@@ -29,7 +29,8 @@ class Controller extends BaseController
         ]);
         if($validate->fails())
         {
-            $data['msg']="参数异常:".$validate->messages()->first();
+            $data['status'] = 0;
+            $data['msg']    = "参数异常:".$validate->messages()->first();
             return $data;
         }
 
@@ -39,23 +40,41 @@ class Controller extends BaseController
         $max  = $request->input("max");
 
         if(!empty($lucknumber)){
-
             $oldNumberArr = explode(',', $lucknumber);
+            //数组校验
+            $oldNumberArr = $this->checkNumberArr($oldNumberArr);
+
+
             $this->delNumber($oldNumberArr);
         }
 
         $number = $this->getRandNumber($num, $min, $max);
-        $count  = Redis::get('safe:count');
-
         $data['number'] = implode(',', $number);
+        $count  = Redis::get('safe:count');
         $data['count']  = $count;
 
+        if(empty($number)){
+            $data['status'] = 0;
+            $data['msg']    = '所选范围号码不够分配，请重选';
+        } 
+
+        if(count($number) < $num){
+            $data['msg']    = '所选范围号码只剩下'.count($number).'个了';
+        }
+        
+        
         \Log::info('number'.$data['number']);
         return $data;
     }
 
-
-
+//数组内数字类型转换
+function checkNumberArr($arr){
+    $new_arr = [];
+    foreach($arr as $val){
+        $new_arr[] = intval($val);
+    }
+    return $new_arr;
+}
 
 function delNumber($oldNumberArr){
     $data = $this->getNumber();
@@ -89,23 +108,23 @@ function getRandNumber($num = 10, $min = 200, $max=2000){
     $count = $max - $min;
     $arr = [];
     $arr_exist = $this->getNumber();
-    foreach($arr_exist as $key => $val){
-        if($key >= $min && $key < $max){
-            $arr[$key] = 1;
+    foreach($arr_exist as  $val){
+        if($val >= $min && $val < $max){
+            $arr[$val] = 1;
         }
     }
 
-
+    $c = ($count+1-$num);
 
     while(1) {
+        if(!$c){
+            break;
+        }
         $k = rand($min, $max);
         if (empty($arr[$k])){
             $arr[$k] = 1;
-        } else {
-            $arr[$k]++;
         }
-
-        if( count($arr) > ($count-$num)){
+        if( count($arr) >= $c){
             break;
         }
     }
@@ -113,15 +132,14 @@ function getRandNumber($num = 10, $min = 200, $max=2000){
 
     $ret = [];
 
-
-    for($j=$min;$j<$max;$j++){
+    for($j=$min ; $j <= $max; $j++){
 
         if(empty($arr[$j])){
+           
             $ret[] = $j;
         }
     }
     
-
     $this->saveNumber($ret);
 
     return $ret;
