@@ -29,7 +29,7 @@ class Controller extends BaseController
         ]);
         if($validate->fails())
         {
-            $data['msg']="参数异常";
+            $data['msg']="参数异常:".$validate->messages()->first();
             return $data;
         }
 
