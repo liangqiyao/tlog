@@ -6,7 +6,7 @@
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>抽奖</title>
+  <title>选号助手</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.9.7/css/layui.css">
 </head>
@@ -19,7 +19,7 @@
 </blockquote>
               
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>抽奖</legend>
+  <legend>选号</legend>
 </fieldset>
 <form class="layui-form" > <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
   <div class="layui-form-item">

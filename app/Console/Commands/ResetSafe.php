@@ -29,7 +29,10 @@ class ResetSafe extends Command
      */
     public function handle()
     {
-        \Log::info("reset safeTickect");
+        \Log::info("reset safeTicket");
+        //重置前可以考虑保存一下 
+        $js = Redis::get('safe:numbers');
+        \Log::info($js);
 
         //重置前可以考虑保存一下 TODO
         Redis::set('safe:numbers', json_encode([]));

@@ -49,6 +49,8 @@ class Controller extends BaseController
 
         $data['number'] = implode(',', $number);
         $data['count']  = $count;
+
+        \Log::info('number'.$data['number']);
         return $data;
     }
 
