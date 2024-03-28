@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redis;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('canvas-ui');
 });
 
 Route::get('/test', function (\Symfony\Component\HttpFoundation\Request $req) {
@@ -50,7 +50,8 @@ Route::prefix('canvas-ui')->group(function () {
 
 
 Route::get('/safeTickect', function () {
-    return view('safe-ticket');
+    $total  = Redis::get('safe:count');//获取奖池数
+    return view('safe-ticket', compact('total'));
 });
 
 
@@ -63,3 +64,7 @@ Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTick
 // }
 // );
 
+
+
+Route::get('/LiangSpi',  [\App\Http\Controllers\SpiderController::class, 'index']
+);
