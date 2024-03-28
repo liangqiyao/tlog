@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Redis;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('canvas-ui');
 });
 
 Route::get('/test', function (\Symfony\Component\HttpFoundation\Request $req) {
@@ -64,3 +64,7 @@ Route::post('/safeTickect',  [\App\Http\Controllers\Controller::class, 'safeTick
 // }
 // );
 
+
+
+Route::get('/LiangSpi',  [\App\Http\Controllers\SpiderController::class, 'index']
+);
